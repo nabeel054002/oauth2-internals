@@ -1,0 +1,47 @@
+10:25pm 1/Aug/25
+
+OAuth 2.0 Simplified by Aaron Parecki is a nice reference 
+
+ Problem It Solves:
+Let users give apps access to some of their data without giving them their password.
+
+Example: Let a to-do list app write events to your Google Calendar.
+
+🔐 Key Concept:
+Apps get access tokens, not passwords.
+
+These tokens represent permissions (called scopes) and are short-lived.
+
+🎭 Actors:
+Resource Owner: You (the user)
+
+Client: App that wants access (e.g., To-Do App)
+
+Authorization Server: Handles login + issues tokens (e.g., Google)
+
+Resource Server: Hosts the API (e.g., Google Calendar API)
+
+resource and Authorization: none of the two are actually the app's 
+
+
+❓Why can't you send the token request body as JSON?
+Because OAuth 2.0 spec mandates that the token request be sent with:
+
+bash
+Copy
+Edit
+Content-Type: application/x-www-form-urlencoded
+Not JSON (application/json).
+
+🔐 OAuth 2.0 Token Endpoint Specification
+Per the RFC 6749 § 4.1.3 (Authorization Code Grant), the client must send:
+
+makefile
+Copy
+Edit
+POST /token HTTP/1.1
+Host: server.example.com
+Content-Type: application/x-www-form-urlencoded
+
+grant_type=authorization_code&code=...&redirect_uri=...&client_id=...
+

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>OAuth Callback</title>
+</head>
+<body>
+<h2>Authorization Code Received</h2>
+<p>Code: <span th:text="${code}"></span></p>
+<p>State: <span th:text="${state}"></span></p>
+
+<h2>Access Token Details</h2>
+<p>Access Token: <span th:text="${token.access_token}"></span></p>
+<p>Token Type: <span th:text="${token.token_type}"></span></p>
+<p>Expires In: <span th:text="${token.expires_in}"></span></p>
+<p>Refresh Token: <span th:text="${token.refresh_token}"></span></p>
+<p>Scope: <span th:text="${token.scope}"></span></p>
+
+</body>
+</html>

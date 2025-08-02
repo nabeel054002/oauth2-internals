@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Login - Auth Server</title>
+</head>
+<body>
+    <h2>Login to Authorize App</h2>
+    <form method="post" action="/login">
+        <input type="hidden" name="redirect_uri" th:value="${redirectUri}"/>
+        <input type="hidden" name="state" th:value="${state}"/>
+        <input type="hidden" name="client_id" th:value="${clientId}" />
+
+        <label>Username: <input type="text" name="username" /></label><br/>
+        <label>Password: <input type="password" name="password" /></label><br/>
+
+        <!-- Displaying non-sensitive data -->
+        <div>
+            <strong>Redirect URI:</strong> <span th:text="${redirectUri}">[redirectUri]</span><br/>
+            <strong>State:</strong> <span th:text="${state}">[state]</span>
+        </div>
+
+        <button type="submit">Login</button>
+    </form>
+</body>
+</html>

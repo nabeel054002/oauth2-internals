@@ -1,0 +1,28 @@
+Step-by-step Flow:
+User clicks “Login with Google”
+
+Browser redirects to authorization server:
+
+https://auth-server.com/oauth/authorize?
+  response_type=code
+  &client_id=abc
+  &redirect_uri=https://your-app.com/callback
+  &scope=email calendar
+  &state=randomstr
+User logs in, gives consent → auth server redirects back:
+
+https://your-app.com/callback?code=XYZ&state=randomstr
+Your app uses code to request tokens:
+
+makefile
+POST /token
+grant_type=authorization_code
+code=XYZ
+client_id=abc
+client_secret=123
+Auth server responds with:
+
+access_token (used to access APIs)
+
+refresh_token (optional, to get new access tokens)
+
